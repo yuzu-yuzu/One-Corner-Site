@@ -1,0 +1,600 @@
+body {
+  background-color: #ffe4c3; /* Fond crème / café au lait */
+  color: #b5651d; /* Couleur du texte par défaut */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 96px;   /* hauteur du header (~84px) + 12px d'air */
+}
+
+@font-face {
+  font-family: 'Aguafina Script';
+  src: url('./assets/fonts/AguafinaScript-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #b5651d;
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.hero {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 12px 24px;
+  margin: 0;
+  line-height: 1.25; /* même hauteur de ligne pour <button> et <a> → texte assis pareil */
+  border: none;
+  border-radius: 999px;
+  background: #b5651d;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif; /* même police que le reste du site pour les deux */
+  text-decoration: none; /* enlève le soulignement du lien */
+  display: inline-block; /* pour que le padding s'applique pareil sur <a> et <button> */
+}
+
+.btn-second {
+  padding: 12px 24px;
+  margin: 0;
+  line-height: 1.25; /* même hauteur de ligne pour <button> et <a> → texte assis pareil */
+  border: none;
+  border-radius: 999px;
+  background: white;
+  color: #b5651d;
+  cursor: pointer;
+  font-size: 16px;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif; /* même police que le reste du site pour les deux */
+  text-decoration: none; /* enlève le soulignement du lien */
+  display: inline-block; /* pour que le padding s'applique pareil sur <a> et <button> */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none; /* cachée par défaut */
+  position: absolute; /* flotte par-dessus la page, sans la pousser */
+  top: 100%; /* juste sous le bouton, 8px d'air */
+  right: 0; /* alignée à droite (ton nav est à droite du header) */
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  min-width: 210px;
+  z-index: 100; /* au-dessus des photos et du slider */
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+} /* apparaît au survol OU au clavier */
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit; /* LA astuce : adopte la police du site en 1 ligne (fini la saga des polices !) */
+  font-size: 15px;
+  color: #b5651d;
+}
+
+.dropdown-menu button:hover {
+  background: #ffe4c3;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+.card {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer {
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+  border-top: 1px solid #b5641d44;
+  font-size: 0.9rem;
+  color: '#8a4d14';
+}
+
+.card a {
+  color: inherit; /* même couleur que les textes simples */
+  text-decoration: none; /* souligné TOUJOURS (pas qu'au survol) : c'est lui qui dit "cliquable" au tactile */
+  font-weight: 700;
+}
+
+.map-frame {
+  max-width: 800px; /* même colonne que tout le site → aligné */
+  margin: 24px auto 0;
+  padding: 0 20px;
+}
+
+.map-frame img {
+  width: 100%;
+  height: auto; /* ⚠️ important : on montre la carte EN ENTIER (rogner une carte = perdre des rues) */
+  display: block;
+  border-radius: 16px; /* mêmes coins que tes photos */
+  border: 1px solid rgba(181, 101, 29, 0.25); /* fin liseré terracotta */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.map-frame {
+  overflow: hidden;
+} /* la cage (tu connais la chanson) */
+.map-frame img {
+  transition: transform 0.3s;
+}
+.map-frame:hover img {
+  transform: scale(1.02);
+}
+
+.site-header {
+  display: flex; /* mets les enfants côte à côte au lieu de les empiler */
+  align-items: center; /* aligne-les verticalement au centre */
+  justify-content: space-between; /* logo à gauche, boutons à droite */
+  padding: 12px 20px;
+  margin: 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffe4c3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.site-header nav {
+  display: flex; /* enfants côte à côte pilotés, fini l'alignement baseline */
+  align-items: center; /* centrés verticalement, au pixel près */
+  gap: 16px; /* espace ENTRE les boutons (remplace leurs marges latérales) */
+}
+
+.site-logo {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0; /* empêche le header flex d'écraser le logo */
+  /* --- reset du style bouton natif --- */
+  background: none; /* adieu le fond gris */
+  border: none; /* adieu la bordure */
+  padding: 0; /* adieu les marges intérieures */
+  border-radius: 50%; /* le bouton épouse le cercle du logo */
+  cursor: pointer; /* main au survol, comme tes autres boutons */
+  line-height: 0; /* supprime l'espace fantôme sous l'image */
+  overflow: hidden; /* le zoom reste prisonnier du cercle */
+}
+
+.site-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* remplit le cercle sans déformer */
+  border-radius: 50%; /* garde le rendu cercle */
+  transition: transform 0.3s; /* ajout de l'animation */
+  display: block;
+}
+
+.site-logo:hover img {
+  transform: scale(1.12);
+}
+
+.hero-banner {
+  width: 100%; /* Prend toute la largeur de l'écran */
+  height: 550px; /* Ton image reste bloquée à cette hauteur */
+  filter: brightness(0.88) saturate(0.92) blur(2px); /* s'ajoute à ta couche 1 existante */
+  transform: scale(1.03); /* compense le rétrécissement des bords flous */
+  object-fit: cover; /* Remplit l'espace sans étirer/déformer l'image */
+  object-position: center 70%; /* Centre le sujet de l'image */
+  display: block;
+}
+
+.hero-wrap {
+  position: relative; /* déjà là : repère pour l'overlay */
+  overflow: hidden; /* NOUVEAU : tout ce qui dépasse du cadre photo est coupé */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0; /* = top:0 + right:0 + bottom:0 + left:0 en un mot : couvre toute la photo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  text-align: center;
+  color: #b5651d;
+  padding: 20px; /* était #b5651d : le marron sur photo, c'est fini */
+}
+
+.hero-overlay h1 {
+  margin: 0;
+  font-family: 'Aguafina Script', cursive;
+  font-weight: 400;
+  font-size: clamp(
+    3rem,
+    12vw,
+    7rem
+  ); /* fluide : 2,8rem mini (téléphone), 5,5rem maxi (PC), proportionnel entre les deux */
+  letter-spacing: 0.12em; /* un souffle entre les lettres */
+  line-height: 1.15; /* de l'air si le titre passe sur 2 lignes */
+}
+
+.hero-rule {
+  display: block;
+  width: 300px;
+  height: 2px; /* le filet fin */
+  background: #b5651d;
+  border-radius: 2px;
+}
+
+.hero-overlay p {
+  margin: 0;
+  font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+  text-transform: uppercase; /* COFFEE & BRUNCH : la casse espacée fait chic sous un grand titre */
+  letter-spacing: 0.35em;
+  margin-top: 0.7em; /* espace plus généreux filet → sous-titre */
+}
+
+.formula-solo {
+  flex: none;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 400px; /* la référence pour le height: 100% de l'image */
+  padding: 0; /* tue le vide */
+  border: none; /* tue le cadre */
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.formules {
+  display: flex;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.formula-card {
+  flex: 1; /* chacun prend 50% : la largeur s'adapte à la fenêtre */
+  height: 400px; /* hauteur fixe comme tu veux */
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.formula-card span {
+  position: absolute; /* sort du flux : ne prend plus de place, se pose où on dit */
+  left: 0;
+  right: 0;
+  bottom: 0; /* collé en bas de la carte (qui est en position: relative → repère) */
+  padding: 40px 16px 14px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+  color: #ffe4c3;
+  text-align: left;
+  font-size: 2rem;
+  font-family: serif;
+}
+
+.formula-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* remplit sans déformer */
+  display: block;
+}
+
+.formula-card .formula-img {
+  transition: transform 0.3s;
+}
+.formula-card:hover .formula-img {
+  transform: scale(1.05);
+}
+
+.swiper-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+}
+.slide-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #b5651d;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.slide-img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+}
+.slide-label {
+  padding: 5px;
+  text-align: center;
+}
+
+.mySwiper {
+  --swiper-navigation-color: #b5651d; /* terracotta du site au lieu du bleu */
+  --swiper-navigation-size: 26px; /* plus discrètes que les 44px d'origine */
+}
+
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mySwiper .swiper-button-prev:hover,
+.mySwiper .swiper-button-next:hover {
+  background: #b5651d; /* pastille marron au survol... */
+  --swiper-navigation-color: white; /* ... et flèche blanche dessus */
+}
+
+.slide-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: inherit;
+}
+.slide-btn .slide-img {
+  transition: transform 0.3s;
+}
+.slide-btn:hover .slide-img {
+  transform: scale(1.05);
+}
+
+.swiper-shell {
+  display: flex;
+  align-items: center; /* flèches centrées verticalement face au slider */
+  gap: 12px;
+}
+
+.swiper-main {
+  flex: 1;
+  min-width: 0; /* ⚠️ LA ligne critique : sans elle, le slider déborde de sa rangée */
+}
+
+.swiper-arrow {
+  flex-shrink: 0; /* les flèches ne s'écrasent jamais */
+  width: 44px; /* zone tactile confortable (reco : 44px mini) */
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(181, 101, 29, 0.35);
+  background: white;
+  color: #b5651d;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.swiper-arrow:hover {
+  background: #b5651d;
+  color: white;
+}
+
+.swiper-arrow:disabled {
+  opacity: 0.35; /* transparent = "bout atteint", comme avant */
+  background: transparent;
+  color: #b5651d;
+  cursor: default; /* plus de main : rien à faire ici */
+  box-shadow: none;
+}
+
+.logoMenu {
+  display: block; /* l'image devient un bloc → les marges auto fonctionnent */
+  margin: 20px auto 0; /* 20px en haut (garde ton espacement), auto à gauche/droite = centré */
+  height: 150px;
+  max-width: 100%;
+  object-fit: contain; /* ⚠️ je te conseille contain au lieu de cover : cover ROGNE un logo, contain l'affiche en entier */
+  border-radius: 16px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 800px;
+  margin: 32px auto 16px;
+  padding: 0 20px;
+  color: #b5651d;
+}
+
+.section-title::before,
+.section-title::after {
+  content: ''; /* une ligne vide... */
+  flex: 1; /* ...qui s'étire pour remplir l'espace restant */
+  border-top: 1px solid rgba(181, 101, 29, 0.4); /* ...transformée en filet terracotta */
+}
+
+.section-title span {
+  white-space: nowrap; /* le titre ne se coupe jamais en deux */
+}
+
+.dish {
+  display: flex; /* enfants côte à côte */
+  gap: 16px; /* espace photo/texte */
+  align-items: center; /* texte centré verticalement face à la photo */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.dish-img {
+  width: 140px;
+  height: 120px;
+  object-fit: cover; /* remplit sans déformer */
+  border-radius: 12px;
+  flex-shrink: 0; /* la photo garde sa taille, c'est le texte qui s'adapte */
+}
+
+.dish-text {
+  flex: 1;
+} /* le texte prend tout le reste */
+
+.formuladish-img {
+  width: 140px;
+  height: 200px;
+  object-fit: cover; /* remplit sans déformer */
+  border-radius: 12px;
+  flex-shrink: 0; /* la photo garde sa taille, c'est le texte qui s'adapte */
+}
+
+.dish-img { aspect-ratio: 7 / 6; }          /* 140×120 : le navigateur réserve le cadre avant l'image */
+.formuladish-img { aspect-ratio: 7 / 10; }  /* 140×200 : idem */
+
+.extras-list {
+  max-width: 800px; /* même largeur que les plats → aligné */
+  margin: 0 auto; /* centré comme les plats */
+  padding: 16px 20px; /* mêmes marges intérieures que les plats */
+  text-align: left;
+}
+
+.extras-list p {
+  margin: 16px 0; /* resserré, comme les lignes de plats */
+  font-weight: 700; /* gras pour les 6 d'un coup */
+}
+
+.extras-list .sweet-desc {
+  font-weight: 400; /* non-gras : annule le gras hérité des lignes */
+  font-size: 0.9rem; /* un cran plus petit, comme les dérivés des plats */
+  margin: 0 0 8px; /* collée à son cookie, petit espace avant le brownie */
+}
+
+.drink {
+  margin-bottom: 16px; /* air ENTRE les articles : on voit 13 blocs distincts */
+}
+
+.drink p {
+  margin: 2px 0; /* lignes COLLÉES dans l'article : nom et description vont ensemble */
+}
+
+.dish-text p,
+.extras-list p,
+.hero p {
+  color: #8a4d14;
+}
+
+/* ===== Mobile (max 600px) : tout s'empile et se réduit ===== */
+@media (max-width: 600px) {
+  /* Bannière : 550px → 250px (sinon 2 écrans de photo avant le texte) */
+  .hero-banner {
+    height: 400px;
+  }
+
+  /* Titre hero légèrement réduit */
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero {
+    padding: 24px 16px;
+  }
+
+  /* Formules : l'une sous l'autre, moins hautes */
+  .formules {
+    flex-direction: column;
+  }
+  .formula-card,
+  .formula-solo {
+    height: 300px;
+  }
+
+  /* Slider : photos 450px → 220px */
+  .slide-img {
+    height: 220px;
+  }
+
+  /* Plats : photo au-dessus, texte en dessous */
+  .dish,
+  .formuladish {
+    flex-direction: column;
+    text-align: center;
+  }
+  .dish-img,
+  .formuladish-img {
+    width: 100%;
+    height: 200px;
+  }
+
+  /* Header compact : boutons plus petits pour tenir sur 360px */
+  .site-header {
+    padding: 10px 12px;
+  }
+  .btn,
+  .btn-second {
+    padding: 10px 16px;
+    font-size: 14px;
+    margin: 0 4px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .hero-banner {
+    filter: brightness(0.85) saturate(0.9) blur(3px);
+  }
+}
