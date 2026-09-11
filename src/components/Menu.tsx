@@ -39,7 +39,7 @@ function DishCard({
   extras = '',
 }: DishCardProps) {
   return (
-    <div className="dish">
+    <article className="dish">
       {image && <img src={image} alt={alt} className="dish-img" />}
       <div className="dish-text">
         <h4>
@@ -48,7 +48,7 @@ function DishCard({
         <p>{description}</p>
         {extras && <p>{extras}</p>}
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -79,8 +79,8 @@ export default function Menu() {
       </p>
 
       <MenuSection id="formules" title="Notre Formule Brunch">
-        <div className="dish">
-          <img src={brunch} alt="image brunch" className="formuladish-img" />
+        <article className="dish">
+          <img src={brunch} alt="Formule brunch" className="formuladish-img" />
           <div className="dish-text">
             <h4>Formule Brunch - 27,90</h4>
             <p>Plat salé ou Sucré au choix</p>
@@ -91,7 +91,7 @@ export default function Menu() {
               maison ou salade de fruits
             </p>
           </div>
-        </div>
+        </article>
       </MenuSection>
 
       <MenuSection id="sale" title="Plat Salé">
@@ -188,25 +188,25 @@ export default function Menu() {
       </MenuSection>
 
       <MenuSection id="extra" title="Extra">
-        <div className="extras-list">
-          <p>Pancake - 3,50</p>
-          <p>Bacon - 3,50</p>
-          <p>Saumon fumé - 3,50</p>
-          <p>3 Crispy Chicken - 7,00</p>
-          <p>Écrasé d'avocat - 2,50</p>
-          <p>Pommes frites - 3,90</p>
-        </div>
+        <ul className="extras-list">
+          <li>Pancake - 3,50</li>
+          <li>Bacon - 3,50</li>
+          <li>Saumon fumé - 3,50</li>
+          <li>3 Crispy Chicken - 7,00</li>
+          <li>Écrasé d'avocat - 2,50</li>
+          <li>Pommes frites - 3,90</li>
+        </ul>
       </MenuSection>
 
       <MenuSection id="douceur" title="Petite Faim">
-        <div className="extras-list">
-          <p>Cookie - 3,90</p>
-          <p className="sweet-desc">Morceaux de chocolat OU 3 chocolats</p>
-          <p>Brownie - 3,90</p>
-          <p>Tiramisu maison - 6,50</p>
-          <p>Salade de fruits - 5,00</p>
-          <p>Pommes frites - 3,90</p>
-        </div>
+        <ul className="extras-list">
+          <li>Cookie - 3,90</li>
+          <li className="sweet-desc">Morceaux de chocolat OU 3 chocolats</li>
+          <li>Brownie - 3,90</li>
+          <li>Tiramisu maison - 6,50</li>
+          <li>Salade de fruits - 5,00</li>
+          <li>Pommes frites - 3,90</li>
+        </ul>
       </MenuSection>
 
       <DrinkSection />
@@ -221,68 +221,68 @@ function DrinkSection() {
         <p style={{ textAlign: 'center' }}>
           Lait végétal - 0,50 : avoine, amande, coco
         </p>
-        <div className="extras-list">
-          <div className="drink">
+        <ul className="extras-list">
+          <li className="drink">
             <p>Expresso - 2,50</p>
             <p className="sweet-desc">Shot de café serré</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Café Allongé - 2,50</p>
             <p className="sweet-desc">Shot de café, eau chaude</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Décaféiné - 2,50</p>
             <p className="sweet-desc">Shot de café serré</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Café Noisette - 3,00</p>
             <p className="sweet-desc">Shot de café, nuage de lait</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Double Expresso - 3,50</p>
             <p className="sweet-desc">2 shots de café serré</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Double Americano - 3,70</p>
             <p className="sweet-desc">2 shots de café, eau chaude</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Café Latte - 5,00</p>
             <p className="sweet-desc">2 shots de café, lait</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Cappuccino - 5,00</p>
             <p className="sweet-desc">
               2 shots de café, lait, nuage de lait, chocolat en poudre
             </p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Flat White - 5,00</p>
             <p className="sweet-desc">2 shots de café, lait</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Mocha - 5,50</p>
             <p className="sweet-desc">
               2 shots de café, lait, nappage de chocolat
             </p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Caramel Macchiato - 5,50</p>
             <p className="sweet-desc">2 shots de café, lait, nappage caramel</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Matcha Latte - 5,50</p>
             <p className="sweet-desc">Matcha, lait</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Chaï Latte - 5,50</p>
             <p className="sweet-desc">Épices de chaï, lait</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Chocolat Chaud - 5,50</p>
             <p className="sweet-desc">Chocolat, lait</p>
-          </div>
-        </div>
+          </li>
+        </ul>
         <DishCard
           image={roseLatte}
           alt="Rose Café Latte"
@@ -296,82 +296,82 @@ function DrinkSection() {
         <p style={{ textAlign: 'center' }}>
           Lait végétal - 0,50 : avoine, amande, coco
         </p>
-        <div className="extras-list">
-          <div className="drink">
+        <ul className="extras-list">
+          <li className="drink">
             <p>Iced Americano - 4,50</p>
             <p className="sweet-desc">2 shots de café, eau froide</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Café Latte - 5,50</p>
             <p className="sweet-desc">2 shots de café, lait froid</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Sweet Café Latte - 6,00</p>
             <p className="sweet-desc">
               SIROP AU CHOIX : rose, caramel, vanille, noisette, myrtille
             </p>
             <p className="sweet-desc">2 shots de café, lait froid</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Chocolat - 6,00</p>
             <p className="sweet-desc">Chocolat, lait froid</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Mocha - 6,00</p>
             <p className="sweet-desc">
               2 shots de café, nappage chocolat, lait froid
             </p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Caramel Macchiato - 6,00</p>
             <p className="sweet-desc">
               2 shots de café, nappage caramel, lait froid
             </p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Chaï - 6,00</p>
             <p className="sweet-desc">Épices chaï, lait froid</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Café Viennois - 6,50</p>
             <p className="sweet-desc">2 shots de café, lait froid, chantilly</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Matcha Latte - 6,50</p>
             <p className="sweet-desc">Matcha, lait froid</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Matcha Latte Sweet - 7,00</p>
             <p className="sweet-desc">
               PURÉE AU CHOIX : fraise, framboise, mangue, myrtille
             </p>
             <p className="sweet-desc">Matcha, lait froid</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Matcha Latte Viennois - 7,00</p>
             <p className="sweet-desc">Matcha, lait froid, chantilly</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Chocolat Viennois - 7,00</p>
             <p className="sweet-desc">Chocolat, lait froid, chantilly</p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Mocha Viennois - 7,00</p>
             <p className="sweet-desc">
               2 shots de café, lait froid, nappage chocolat, chantilly
             </p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Tiramisu Latte - 7,00</p>
             <p className="sweet-desc">
               2 shots de café, lait froid, nappage chocolat, crème, chocolat en
               poudre
             </p>
-          </div>
-          <div className="drink">
+          </li>
+          <li className="drink">
             <p>Iced Thé Citron Yuzu - 5,00</p>
-          </div>
-        </div>
+          </li>
+        </ul>
         <DishCard
           image={iceMaRas}
           alt="Iced Matcha Latte Framboise"
@@ -383,46 +383,46 @@ function DrinkSection() {
       </MenuSection>
 
       <MenuSection id="extra-boisson" title="Extra">
-        <div className="extras-list">
-          <p>Grand Format - 0,50</p>
-          <p>Shot Expresso - 1,00</p>
-          <p>Chantilly - 1,00</p>
-          <p>Sirop - 0,50</p>
-          <p className="sweet-desc">
+        <ul className="extras-list">
+          <li>Grand Format - 0,50</li>
+          <li>Shot Expresso - 1,00</li>
+          <li>Chantilly - 1,00</li>
+          <li>Sirop - 0,50</li>
+          <li className="sweet-desc">
             Rose, vanille, caramel, noisette, myrtille
-          </p>
-          <p>Lait Végétal - 0,50</p>
-          <p className="sweet-desc">Avoine, amande, coco</p>
-        </div>
+          </li>
+          <li>Lait Végétal - 0,50</li>
+          <li className="sweet-desc">Avoine, amande, coco</li>
+        </ul>
       </MenuSection>
 
       <MenuSection id="jus" title="Jus">
-        <div className="extras-list">
-          <p>Orange Pressée - 5,50</p>
-          <p>Multifruits - 5,00</p>
-        </div>
+        <ul className="extras-list">
+          <li>Orange Pressée - 5,50</li>
+          <li>Multifruits - 5,00</li>
+        </ul>
       </MenuSection>
 
       <MenuSection id="the-infusion" title="Thé Infusion">
-        <div className="extras-list">
-          <p>Thé Yuzu - 4,50</p>
-          <p>Kusmi Tea Earl Grey Bio - 3,90</p>
-          <p>Kusmi Tea English Breakfast Bio - 3,90</p>
-          <p>Kusmi Tea Ceylan Bio - 3,90</p>
-          <p>Kusmi Tea Vert au Jasmin Bio - 3,90</p>
-          <p>Kusmi Tea Detox Bio - 3,90</p>
-        </div>
+        <ul className="extras-list">
+          <li>Thé Yuzu - 4,50</li>
+          <li>Kusmi Tea Earl Grey Bio - 3,90</li>
+          <li>Kusmi Tea English Breakfast Bio - 3,90</li>
+          <li>Kusmi Tea Ceylan Bio - 3,90</li>
+          <li>Kusmi Tea Vert au Jasmin Bio - 3,90</li>
+          <li>Kusmi Tea Detox Bio - 3,90</li>
+        </ul>
       </MenuSection>
 
       <MenuSection id="soda-canette" title="Soda">
-        <div className="extras-list">
-          <p>Coca - 2,90</p>
-          <p>Coca Zéro - 2,90</p>
-          <p>Orangina - 2,90</p>
-          <p>Ice Tea - 2,90</p>
-          <p>Sanpellegrino - 2,90</p>
-          <p>Évian - 2,90</p>
-        </div>
+        <ul className="extras-list">
+          <li>Coca - 2,90</li>
+          <li>Coca Zéro - 2,90</li>
+          <li>Orangina - 2,90</li>
+          <li>Ice Tea - 2,90</li>
+          <li>Sanpellegrino - 2,90</li>
+          <li>Évian - 2,90</li>
+        </ul>
       </MenuSection>
     </div>
   );

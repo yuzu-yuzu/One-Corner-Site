@@ -33,7 +33,6 @@ export default function Home({ onGoMenu = () => {} }: HomeProps) {
         </div>
       </div>
       <div className="hero">
-        <h2 className="sr-only">Coffee & Brunch</h2>
         <p>Le coin cosy du Marais pour une pause café et un brunch maison. </p>
         <p>
           Niché dans le calme du passage Molière au cœur du Marais, One Corner
@@ -113,7 +112,7 @@ export function MenuSwiper({ onGoMenu = () => {} }: HomeProps) {
       section: 'boisson-chaude',
     },
     {
-      title: 'Iced Matcha Sweet Framboise',
+      title: 'Iced Matcha Framboise',
       image: icemarasImg,
       section: 'boisson-froide',
     },

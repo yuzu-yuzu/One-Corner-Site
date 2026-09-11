@@ -500,6 +500,7 @@ button:focus-visible {
 .formuladish-img {
   width: 140px;
   height: 200px;
+  object-position: center 70%;
   object-fit: cover; /* remplit sans déformer */
   border-radius: 12px;
   flex-shrink: 0; /* la photo garde sa taille, c'est le texte qui s'adapte */
@@ -509,6 +510,7 @@ button:focus-visible {
 .formuladish-img { aspect-ratio: 7 / 10; }  /* 140×200 : idem */
 
 .extras-list {
+  list-style: none; 
   max-width: 800px; /* même largeur que les plats → aligné */
   margin: 0 auto; /* centré comme les plats */
   padding: 16px 20px; /* mêmes marges intérieures que les plats */
