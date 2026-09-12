@@ -408,7 +408,8 @@ function DrinkSection() {
           <li>Thé Yuzu - 4,50</li>
           <li>Kusmi Tea Earl Grey Bio - 3,90</li>
           <li>Kusmi Tea English Breakfast Bio - 3,90</li>
-          <li>Kusmi Tea Ceylan Bio - 3,90</li>
+          <li>Kusmi Tea Verveine menthe - 3,90</li>
+          <li>Kusmi Tea Vert à la menthe - 3,90</li>
           <li>Kusmi Tea Vert au Jasmin Bio - 3,90</li>
           <li>Kusmi Tea Detox Bio - 3,90</li>
         </ul>
