@@ -208,7 +208,7 @@ export default function Menu({ en = false }: { en?: boolean }) {
               alt: 'Salmon egg benedict',
               position: 'center 75%',
             },
-            { src: baconEgg, alt: 'Bacon egg benedict' },
+            { src: baconEgg, alt: 'Bacon egg benedict', position: 'center 80%' },
           ]}
           name="Avocado Egg Benedict"
           price="13,90"
