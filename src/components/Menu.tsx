@@ -1,5 +1,5 @@
 import menulogo from '../assets/menulogo.png';
-import brunch from '../assets/formuleBrunch.jpg';
+import brunch from '../assets/baconEgg2.jpg';
 import avocadoEgg from '../assets/avocadoEgg.jpg';
 import salmonEgg from '../assets/salmonEgg.jpg';
 import baconEgg from '../assets/baconEgg.jpg';
@@ -184,7 +184,14 @@ export default function Menu({ en = false }: { en?: boolean }) {
         title={en ? 'Our Brunch Set Menu' : 'Notre Formule Brunch'}
       >
         <article className="dish">
-          <img src={brunch} alt="Formule brunch" className="formuladish-img" />
+          <div className="formuladish-frame">
+            <img src={brunch} alt="Formule brunch" className="formuladish-img" />
+            <span className="formuladish-title" aria-hidden="true">
+              Formule
+              <br />
+              Brunch
+            </span>
+          </div>
           <div className="dish-text">
             <h4>Formule Brunch - 27,90</h4>
             <p>{en ? 'Savory or sweet dish of your choice' : 'Plat salé ou Sucré au choix'}</p>

@@ -540,6 +540,25 @@ button:focus-visible {
   flex-shrink: 0; /* la photo garde sa taille, c'est le texte qui s'adapte */
 }
 
+.formuladish-frame {
+  position: relative; /* repère pour le titre posé sur la photo */
+  flex-shrink: 0; /* le cadre garde sa taille, comme l'image avant */
+}
+
+.formuladish-title {
+  position: absolute; /* posé sur la photo, sans pousser la mise en page */
+  top: 12%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: serif; /* comme le titre de la carte formule sur l'accueil */
+  color: #ffe4c3; /* crème du site, comme la carte formule */
+  font-size: 1.75rem;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45); /* lisible sur photo claire ou foncée */
+  pointer-events: none; /* le texte ne bloque pas les clics */
+}
+
 .dish-img { aspect-ratio: 7 / 6; }          /* 140×120 : le navigateur réserve le cadre avant l'image */
 .formuladish-img { aspect-ratio: 7 / 10; }  /* 140×200 : idem */
 
@@ -618,6 +637,16 @@ button:focus-visible {
     height: 275px;
     display: block;
     margin: 0 auto;
+  }
+
+  .formuladish-frame {
+    width: 100%; /* même boîte que l'image seule avant */
+    max-width: 430px;
+    margin: 0 auto;
+  }
+
+  .formuladish-title {
+    display: none; /* mobile : pas de titre, la carte garde son format d'origine */
   }
 
   /* Header compact : boutons plus petits pour tenir sur 360px */
