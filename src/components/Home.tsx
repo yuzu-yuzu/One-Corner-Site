@@ -17,13 +17,17 @@ import type { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, Keyboard, FreeMode } from 'swiper/modules';
 
-export default function Home({ onGoMenu = () => {} }: HomeProps) {
+export default function Home({ onGoMenu = () => {}, en = false }: HomeProps) {
   return (
     <div>
       <div className="hero-wrap">
         <img
           src={homePhoto}
-          alt="Photo d'une table servie du brunch, Coffee & Brunch"
+          alt={
+            en
+              ? 'Photo of a served brunch table, Coffee & Brunch'
+              : "Photo d'une table servie du brunch, Coffee & Brunch"
+          }
           className="hero-banner"
         />
         <div className="hero-overlay">
@@ -33,28 +37,41 @@ export default function Home({ onGoMenu = () => {} }: HomeProps) {
         </div>
       </div>
       <div className="hero">
-        <p>Le coin cosy du Marais pour une pause café et un brunch maison. </p>
         <p>
-          Niché dans le calme du passage Molière au cœur du Marais, One Corner
-          propose une cuisine faite maison, généreuse et décontractée.
+          {en
+            ? 'A cozy corner of the Marais for a coffee break and homemade brunch.'
+            : 'Le coin cosy du Marais pour une pause café et un brunch maison.'}{' '}
         </p>
         <p>
-          Laissez-vous tenter par notre carte brunch servie à toute heure :
-          assiettes gourmandes, douceurs sucrées, cafés réconfortants. Un
-          véritable cocon cosy pour savourer un moment seul ou à plusieurs.{' '}
+          {en
+            ? 'Tucked away in the quiet passage Molière in the heart of the Marais, One Corner serves generous, laid-back homemade food.'
+            : 'Niché dans le calme du passage Molière au cœur du Marais, One Corner propose une cuisine faite maison, généreuse et décontractée.'}
         </p>
-        <p>Notre carte s'adapte à toutes les envies !</p>
+        <p>
+          {en
+            ? 'Treat yourself to our brunch menu served all day: hearty plates, sweet treats, comforting coffees. A truly cozy cocoon to savor a moment alone or with others.'
+            : 'Laissez-vous tenter par notre carte brunch servie à toute heure : assiettes gourmandes, douceurs sucrées, cafés réconfortants. Un véritable cocon cosy pour savourer un moment seul ou à plusieurs.'}{' '}
+        </p>
+        <p>
+          {en
+            ? 'Our menu adapts to every craving!'
+            : 'Notre carte s’adapte à toutes les envies !'}
+        </p>
         <button className="btn-second" onClick={() => onGoMenu()}>
-          Découvrez notre menu
+          {en ? 'Explore our menu' : 'Découvrez notre menu'}
         </button>
         <img
           src={brunch}
-          alt="photo d'un brunch avec waffle original, waffle bacon et salmon egg benedict"
+          alt={
+            en
+              ? 'photo of a brunch with original waffle, bacon waffle and salmon egg benedict'
+              : 'photo d’un brunch avec waffle original, waffle bacon et salmon egg benedict'
+          }
           className="hero-image"
         />
       </div>
       <div className="hero">
-        <h2>Notre Formule Brunch</h2>
+        <h2>{en ? 'Our Brunch Set Menu' : 'Notre Formule Brunch'}</h2>
         <div className="formules">
           <FormulaCard
             image={brunchImg}
@@ -66,8 +83,8 @@ export default function Home({ onGoMenu = () => {} }: HomeProps) {
         </div>
       </div>
       <div className="hero">
-        <h2>Une envie en particulier ?</h2>
-        <MenuSwiper onGoMenu={onGoMenu} />
+        <h2>{en ? 'Craving something specific?' : 'Une envie en particulier ?'}</h2>
+        <MenuSwiper onGoMenu={onGoMenu} en={en} />
       </div>
     </div>
   );
@@ -83,6 +100,7 @@ type Props = {
 
 type HomeProps = {
   onGoMenu?: (section?: string) => void;
+  en?: boolean;
 };
 
 export function FormulaCard({ image, title, alt, onSelect }: Props) {
@@ -100,7 +118,7 @@ export function FormulaCard({ image, title, alt, onSelect }: Props) {
   );
 }
 
-export function MenuSwiper({ onGoMenu = () => {} }: HomeProps) {
+export function MenuSwiper({ onGoMenu = () => {}, en = false }: HomeProps) {
   const products = [
     { title: 'Pancakes Fruits', image: pfruitImg, section: 'sucre' },
     { title: 'Waffle Originale', image: woriginalImg, section: 'sucre' },
@@ -131,7 +149,7 @@ export function MenuSwiper({ onGoMenu = () => {} }: HomeProps) {
         <button
           type="button"
           className="swiper-arrow"
-          aria-label="Photos précédentes"
+          aria-label={en ? 'Previous photos' : 'Photos précédentes'}
           disabled={!canPrev}
           onClick={() => swiper?.slidePrev()}
         >
@@ -194,7 +212,7 @@ export function MenuSwiper({ onGoMenu = () => {} }: HomeProps) {
         <button
           type="button"
           className="swiper-arrow"
-          aria-label="Photos suivantes"
+          aria-label={en ? 'Next photos' : 'Photos suivantes'}
           disabled={!canNext}
           onClick={() => swiper?.slideNext()}
         >

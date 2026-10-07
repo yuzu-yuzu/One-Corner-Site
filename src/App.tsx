@@ -5,6 +5,8 @@ import logo from './assets/OneCornerLogoCercle.png';
 import { useState, useEffect } from 'react';
 
 export default function App() {
+  // false = français, true = anglais. Le bouton affiche la langue de destination.
+  const [en, setEn] = useState(false);
   const [page, setPage] = useState(() =>
     window.location.hash === '#menu' ? 'menu' : 'home',
   );
@@ -12,6 +14,12 @@ export default function App() {
     window.location.hash = page;
     window.scrollTo(0, 0);
   }, [page]);
+  useEffect(() => {
+    document.documentElement.lang = en ? 'en' : 'fr';
+    document.title = en
+      ? 'OneCorner – Coffee & Brunch in Paris'
+      : 'OneCorner – Coffee & Brunch à Paris';
+  }, [en]);
   useEffect(() => {
     const onHash = () => {
       const h = window.location.hash;
@@ -46,6 +54,13 @@ export default function App() {
           <img src={logo} alt="Logo OneCorner" />
         </button>
         <nav>
+          <button
+            type="button"
+            className="btn-second"
+            onClick={() => setEn(!en)}
+          >
+            {en ? 'FR' : 'EN'}
+          </button>
           <a href="#contact" className="btn-second">
             Contact
           </a>
@@ -54,24 +69,36 @@ export default function App() {
               Menu
             </button>
             <div className="dropdown-menu">
-              <button onClick={() => goMenu('formules')}>Formule Brunch</button>
-              <button onClick={() => goMenu('sale')}>Plat Salé</button>
-              <button onClick={() => goMenu('sucre')}>Plat Sucré</button>
-              <button onClick={() => goMenu('douceur')}>Petite Faim</button>
+              <button onClick={() => goMenu('formules')}>
+                Formule Brunch
+              </button>
+              <button onClick={() => goMenu('sale')}>
+                {en ? 'Savory' : 'Plat Salé'}
+              </button>
+              <button onClick={() => goMenu('sucre')}>
+                {en ? 'Sweet' : 'Plat Sucré'}
+              </button>
+              <button onClick={() => goMenu('douceur')}>
+                {en ? 'Snacks' : 'Petite Faim'}
+              </button>
               <button onClick={() => goMenu('boisson-chaude')}>
-                Boisson Chaude
+                {en ? 'Hot Drinks' : 'Boisson Chaude'}
               </button>
               <button onClick={() => goMenu('boisson-froide')}>
-                Boisson Froide
+                {en ? 'Cold Drinks' : 'Boisson Froide'}
               </button>
-              <button onClick={() => goMenu('jus')}>Jus &amp; Thé</button>
+              <button onClick={() => goMenu('jus')}>
+                {en ? 'Juices & Teas' : 'Jus & Thé'}
+              </button>
             </div>
           </div>
         </nav>
         <h1 className="sr-only">One Corner Coffee Brunch</h1>
       </header>
-      <main>{page === 'menu' ? <Menu /> : <Home onGoMenu={goMenu} />}</main>
-      <Contact />
+      <main>
+        {page === 'menu' ? <Menu en={en} /> : <Home onGoMenu={goMenu} en={en} />}
+      </main>
+      <Contact en={en} />
     </div>
   );
 }

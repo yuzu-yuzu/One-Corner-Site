@@ -64,223 +64,344 @@ function MenuSection({ id, title, children }: MenuSectionProps) {
   );
 }
 
-export default function Menu() {
+export default function Menu({ en = false }: { en?: boolean }) {
   return (
     <div className="menu-page">
       <h2 className="sr-only">Notre Menu</h2>
       <img src={menulogo} alt="Logo Menu" className="logoMenu" />
       <p style={{ textAlign: 'center', color: '#8a4d14' }}>
-        Notre carte s'adapte à toutes les envies ! Une demande particulière ou
-        une allergie ?
+        {en
+          ? 'Our menu adapts to every craving! A special request or an allergy?'
+          : 'Notre carte s’adapte à toutes les envies ! Une demande particulière ou une allergie ?'}
       </p>
       <p style={{ textAlign: 'center', color: '#8a4d14' }}>
-        N'hésitez pas à nous solliciter, nous ferons notre possible pour vous
-        faire plaisir.{' '}
+        {en
+          ? "Don't hesitate to ask us, we'll do our best to make you happy."
+          : 'N’hésitez pas à nous solliciter, nous ferons notre possible pour vous faire plaisir.'}{' '}
       </p>
 
-      <MenuSection id="formules" title="Notre Formule Brunch">
+      <MenuSection
+        id="formules"
+        title={en ? 'Our Brunch Set Menu' : 'Notre Formule Brunch'}
+      >
         <article className="dish">
           <img src={brunch} alt="Formule brunch" className="formuladish-img" />
           <div className="dish-text">
             <h4>Formule Brunch - 27,90</h4>
-            <p>Plat salé ou Sucré au choix</p>
-            <p>Boisson chaude ou froide au choix</p>
-            <p>Jus d'orange ou multifruit</p>
+            <p>{en ? 'Savory or sweet dish of your choice' : 'Plat salé ou Sucré au choix'}</p>
+            <p>{en ? 'Hot or cold drink of your choice' : 'Boisson chaude ou froide au choix'}</p>
+            <p>{en ? 'Orange or multifruit juice' : "Jus d'orange ou multifruit"}</p>
             <p>
-              Dessert au choix : petit granola, 2 boules de glaces, tiramisu
-              maison ou salade de fruits
+              {en
+                ? 'Dessert of your choice: small granola, 2 scoops of ice cream, homemade tiramisu or fruit salad'
+                : 'Dessert au choix : petit granola, 2 boules de glaces, tiramisu maison ou salade de fruits'}
             </p>
           </div>
         </article>
       </MenuSection>
 
-      <MenuSection id="sale" title="Plat Salé">
+      <MenuSection id="sale" title={en ? 'Savory' : 'Plat Salé'}>
         <DishCard
           image={avocadoEgg}
           alt="Avocado egg benedict"
           name="Avocado Egg Benedict"
           price="13,90"
-          description="Pain de muffin, avocat, coleslaw, 2 œufs pochés, sauce hollandaise, salade"
-          extras="SAUMON FUMÉ ou BACON + 2€"
+          description={
+            en
+              ? 'Muffin bread, avocado, coleslaw, 2 poached eggs, hollandaise sauce, salad'
+              : 'Pain de muffin, avocat, coleslaw, 2 œufs pochés, sauce hollandaise, salade'
+          }
+          extras={en ? 'SMOKED SALMON or BACON + 2€' : 'SAUMON FUMÉ ou BACON + 2€'}
         />
         <DishCard
           image={wafflebacon}
           alt="Waffle Salée"
           name="Waffle Salée"
           price="15,90"
-          description="AU CHOIX : Crispy Chicken, Bacon, Saumon Fumé"
-          extras="Gaufre, viande au choix, avocat, oeuf plat, coleslaw, oignon mariné, sauce maison"
+          description={
+            en
+              ? 'YOUR CHOICE: Crispy Chicken, Bacon, Smoked Salmon'
+              : 'AU CHOIX : Crispy Chicken, Bacon, Saumon Fumé'
+          }
+          extras={
+            en
+              ? 'Waffle, meat of your choice, avocado, sunny-side-up egg, coleslaw, pickled onion, homemade sauce'
+              : 'Gaufre, viande au choix, avocat, oeuf plat, coleslaw, oignon mariné, sauce maison'
+          }
         />
         <DishCard
           image={avocadoToast}
           alt="Avocado Toast"
           name="Avocado Toast"
           price="13,90"
-          description="Pain toast, avocat écrasé, fromage blanc, tomate confite, sauce pesto, salade"
+          description={
+            en
+              ? 'Toasted bread, smashed avocado, fromage blanc, confit tomato, pesto sauce, salad'
+              : 'Pain toast, avocat écrasé, fromage blanc, tomate confite, sauce pesto, salade'
+          }
         />
         <DishCard
           image={salmonToast}
           alt="Saumon Toast"
           name="Saumon Toast"
           price="14,90"
-          description="Pain toast, saumon fumé, sauce gravlax, oeuf brouillé, salade"
+          description={
+            en
+              ? 'Toasted bread, smoked salmon, gravlax sauce, scrambled egg, salad'
+              : 'Pain toast, saumon fumé, sauce gravlax, oeuf brouillé, salade'
+          }
         />
         <DishCard
           name="Crispy César"
           price="13,90"
-          description="Salade, crispy chicken, oeuf dur, croutons, parmesan, tomate cerise."
+          description={
+            en
+              ? 'Romaine lettuce, crispy chicken, hard-boiled egg, croutons, parmesan, cherry tomato.'
+              : 'Salade, crispy chicken, oeuf dur, croutons, parmesan, tomate cerise.'
+          }
         />
         <DishCard
           name="Sides de Maison"
           price="15,90"
-          description="AU CHOIX : Bacon ou Saumon Fumé"
-          extras="Pain toast, viande au choix, oeufs brouillés, avocat, beurre, cream cheese, oignon rouge"
+          description={
+            en ? 'YOUR CHOICE: Bacon or Smoked Salmon' : 'AU CHOIX : Bacon ou Saumon Fumé'
+          }
+          extras={
+            en
+              ? 'Toasted bread, meat of your choice, scrambled eggs, avocado, butter, cream cheese, red onion'
+              : 'Pain toast, viande au choix, oeufs brouillés, avocat, beurre, cream cheese, oignon rouge'
+          }
         />
       </MenuSection>
 
-      <MenuSection id="sucre" title="Plat Sucré">
+      <MenuSection id="sucre" title={en ? 'Sweet' : 'Plat Sucré'}>
         <h3 style={{ textAlign: 'center' }}>
           {' '}
-          Vous êtes plutôt Pancakes ou Waffle ?
+          {en
+            ? 'Team Pancakes or Team Waffle?'
+            : 'Vous êtes plutôt Pancakes ou Waffle ?'}
         </h3>
         <p style={{ textAlign: 'center', color: '#8a4d14' }}>
           {' '}
-          Le choix entre 3 pancakes OU 1 gaufre.
+          {en
+            ? 'The choice between 3 pancakes OR 1 waffle.'
+            : 'Le choix entre 3 pancakes OU 1 gaufre.'}
         </p>
         <DishCard
           image={waffleoriginal}
           alt="waffle original"
           name="Original"
           price="9,50"
-          description="Crème fouettée maison, sirop d'érable, sucre glace"
+          description={
+            en ? 'YOUR CHOICE: 3 pancakes or Waffle' : 'AU CHOIX : 3 pancakes ou Gaufre'
+          }
+          extras={
+            en
+              ? 'Homemade whipped cream, maple syrup, icing sugar'
+              : "Crème fouettée maison, sirop d'érable, sucre glace"
+          }
         />
         <DishCard
           image={pancakesfruits}
           alt="pancakes fruits"
           name="Fruits"
           price="13,50"
-          description="Crème fouettée maison, fruits frais, sirop d'érable, sucre glace"
+          description={
+            en ? 'YOUR CHOICE: 3 pancakes or Waffle' : 'AU CHOIX : 3 pancakes ou Gaufre'
+          }
+          extras={
+            en
+              ? 'Homemade whipped cream, fresh fruit, maple syrup, icing sugar'
+              : 'Crème fouettée maison, fruits frais, sirop d’érable, sucre glace'
+          }
         />
         <DishCard
           image={waffleBch}
           alt="waffle banane chocolat"
           name="Banane Choco"
           price="13,50"
-          description="Crème fouettée maison, banane brûlée, pépites de chocolat, nappage chocolat, sucre glace"
+          description={
+            en ? 'YOUR CHOICE: 3 pancakes or Waffle' : 'AU CHOIX : 3 pancakes ou Gaufre'
+          }
+          extras={
+            en
+              ? 'Homemade whipped cream, torched banana, chocolate chips, chocolate drizzle, icing sugar'
+              : 'Crème fouettée maison, banane brûlée, pépites de chocolat, nappage chocolat, sucre glace'
+          }
         />
         <DishCard
           name="Ice Cream"
           price="13,50"
-          description="Crème fouettée maison, 2 boules de glaces au choix (fraise, chocolat ou vanille), nappage chocolat, sucre glace"
+          description={
+            en ? 'YOUR CHOICE: 3 pancakes or Waffle' : 'AU CHOIX : 3 pancakes ou Gaufre'
+          }
+          extras={
+            en
+              ? 'Homemade whipped cream, 2 scoops of ice cream of your choice (strawberry, chocolate, vanilla or coconut), chocolate drizzle, icing sugar'
+              : 'Crème fouettée maison, 2 boules de glaces au choix (fraise, chocolat, vanille ou coco), nappage chocolat, sucre glace'
+          }
         />
         <DishCard
           image={petitgranola}
           alt="petit granola"
           name="Petit Granola"
           price="6,00"
-          description="Yaourt Grec, granola, fruits frais"
+          description={
+            en
+              ? 'Greek yogurt, granola, fresh fruit'
+              : 'Yaourt Grec, granola, fruits frais'
+          }
         />
         <DishCard
           name="Grand Granola"
           price="10,00"
-          description="Yaourt Grec, granola, fruits frais"
+          description={
+            en
+              ? 'Greek yogurt, granola, fresh fruit'
+              : 'Yaourt Grec, granola, fruits frais'
+          }
         />
       </MenuSection>
 
-      <MenuSection id="extra" title="Extra">
+      <MenuSection id="extra" title={en ? 'Extras' : 'Extra'}>
         <ul className="extras-list">
           <li>Pancake - 3,50</li>
           <li>Bacon - 3,50</li>
-          <li>Saumon fumé - 3,50</li>
+          <li>{en ? 'Smoked salmon - 3,50' : 'Saumon fumé - 3,50'}</li>
           <li>3 Crispy Chicken - 7,00</li>
-          <li>Écrasé d'avocat - 2,50</li>
-          <li>Pommes frites - 3,90</li>
+          <li>{en ? "Smashed avocado - 2,50" : "Écrasé d'avocat - 2,50"}</li>
+          <li>{en ? 'French fries - 3,90' : 'Pommes frites - 3,90'}</li>
         </ul>
       </MenuSection>
 
-      <MenuSection id="douceur" title="Petite Faim">
+      <MenuSection id="douceur" title={en ? 'Snacks' : 'Petite Faim'}>
         <ul className="extras-list">
           <li>Cookie - 3,90</li>
-          <li className="sweet-desc">Morceaux de chocolat OU 3 chocolats</li>
+          <li className="sweet-desc">
+            {en
+              ? 'Chocolate chunks OR triple chocolate'
+              : 'Morceaux de chocolat OU 3 chocolats'}
+          </li>
           <li>Brownie - 3,90</li>
-          <li>Tiramisu maison - 6,50</li>
-          <li>Salade de fruits - 5,00</li>
-          <li>Pommes frites - 3,90</li>
+          <li>{en ? 'Homemade tiramisu - 6,50' : 'Tiramisu maison - 6,50'}</li>
+          <li>{en ? 'Fruit salad - 5,00' : 'Salade de fruits - 5,00'}</li>
+          <li>{en ? 'French fries - 3,90' : 'Pommes frites - 3,90'}</li>
         </ul>
       </MenuSection>
 
-      <DrinkSection />
+      <DrinkSection en={en} />
     </div>
   );
 }
 
-function DrinkSection() {
+function DrinkSection({ en = false }: { en?: boolean }) {
   return (
     <div>
-      <MenuSection id="boisson-chaude" title="Boisson Chaude">
+      <MenuSection
+        id="boisson-chaude"
+        title={en ? 'Hot Drinks' : 'Boisson Chaude'}
+      >
         <p style={{ textAlign: 'center' }}>
-          Lait végétal - 0,50 : avoine, amande, coco
+          {en
+            ? 'Plant milk - 0,50: oat, almond, coconut'
+            : 'Lait végétal - 0,50 : avoine, amande, coco'}
         </p>
         <ul className="extras-list">
           <li className="drink">
             <p>Expresso - 2,50</p>
-            <p className="sweet-desc">Shot de café serré</p>
+            <p className="sweet-desc">
+              {en ? 'Tight espresso shot' : 'Shot de café serré'}
+            </p>
           </li>
           <li className="drink">
             <p>Café Allongé - 2,50</p>
-            <p className="sweet-desc">Shot de café, eau chaude</p>
+            <p className="sweet-desc">
+              {en ? 'Espresso shot, hot water' : 'Shot de café, eau chaude'}
+            </p>
           </li>
           <li className="drink">
             <p>Décaféiné - 2,50</p>
-            <p className="sweet-desc">Shot de café serré</p>
+            <p className="sweet-desc">
+              {en ? 'Tight decaf shot' : 'Shot de café serré'}
+            </p>
           </li>
           <li className="drink">
             <p>Café Noisette - 3,00</p>
-            <p className="sweet-desc">Shot de café, nuage de lait</p>
+            <p className="sweet-desc">
+              {en ? 'Espresso shot, dash of milk' : 'Shot de café, nuage de lait'}
+            </p>
           </li>
           <li className="drink">
             <p>Double Expresso - 3,50</p>
-            <p className="sweet-desc">2 shots de café serré</p>
+            <p className="sweet-desc">
+              {en ? '2 tight espresso shots' : '2 shots de café serré'}
+            </p>
           </li>
           <li className="drink">
             <p>Double Americano - 3,70</p>
-            <p className="sweet-desc">2 shots de café, eau chaude</p>
+            <p className="sweet-desc">
+              {en ? '2 espresso shots, hot water' : '2 shots de café, eau chaude'}
+            </p>
           </li>
           <li className="drink">
             <p>Café Latte - 5,00</p>
-            <p className="sweet-desc">2 shots de café, lait</p>
+            <p className="sweet-desc">
+              {en ? '2 espresso shots, milk' : '2 shots de café, lait'}
+            </p>
           </li>
           <li className="drink">
             <p>Cappuccino - 5,00</p>
             <p className="sweet-desc">
-              2 shots de café, lait, nuage de lait, chocolat en poudre
+              {en
+                ? '2 espresso shots, milk, milk foam, cocoa powder'
+                : '2 shots de café, lait, nuage de lait, chocolat en poudre'}
             </p>
           </li>
           <li className="drink">
             <p>Flat White - 5,00</p>
-            <p className="sweet-desc">2 shots de café, lait</p>
+            <p className="sweet-desc">
+              {en ? '2 espresso shots, milk' : '2 shots de café, lait'}
+            </p>
           </li>
           <li className="drink">
             <p>Mocha - 5,50</p>
             <p className="sweet-desc">
-              2 shots de café, lait, nappage de chocolat
+              {en
+                ? '2 espresso shots, milk, chocolate drizzle'
+                : '2 shots de café, lait, nappage de chocolat'}
             </p>
           </li>
           <li className="drink">
             <p>Caramel Macchiato - 5,50</p>
-            <p className="sweet-desc">2 shots de café, lait, nappage caramel</p>
+            <p className="sweet-desc">
+              {en
+                ? '2 espresso shots, milk, caramel drizzle'
+                : '2 shots de café, lait, nappage caramel'}
+            </p>
           </li>
           <li className="drink">
             <p>Matcha Latte - 5,50</p>
-            <p className="sweet-desc">Matcha, lait</p>
+            <p className="sweet-desc">{en ? 'Matcha, milk' : 'Matcha, lait'}</p>
           </li>
           <li className="drink">
             <p>Chaï Latte - 5,50</p>
-            <p className="sweet-desc">Épices de chaï, lait</p>
+            <p className="sweet-desc">
+              {en ? 'Chai spices, milk' : 'Épices de chaï, lait'}
+            </p>
+          </li>
+          <li className="drink">
+            <p>Rose Café Latte - 5,50</p>
+            <p className="sweet-desc">
+              {en
+                ? '2 espresso shots, rose syrup, milk, dried rose petal'
+                : '2 shots de café, sirop de rose, lait, pétale de rose séchée'}
+            </p>
           </li>
           <li className="drink">
             <p>Chocolat Chaud - 5,50</p>
-            <p className="sweet-desc">Chocolat, lait</p>
+            <p className="sweet-desc">
+              {en ? 'Chocolate, milk' : 'Chocolat, lait'}
+            </p>
           </li>
         </ul>
         <DishCard
@@ -288,84 +409,128 @@ function DrinkSection() {
           alt="Rose Café Latte"
           name="Rose Café Latte"
           price="5,50"
-          description="2 shots de café, sirop de rose, lait, pétale de rose séchée"
+          description={
+            en
+              ? '2 espresso shots, rose syrup, milk, dried rose petal'
+              : '2 shots de café, sirop de rose, lait, pétale de rose séchée'
+          }
         />
       </MenuSection>
 
-      <MenuSection id="boisson-froide" title="Boisson Froide">
+      <MenuSection
+        id="boisson-froide"
+        title={en ? 'Cold Drinks' : 'Boisson Froide'}
+      >
         <p style={{ textAlign: 'center' }}>
-          Lait végétal - 0,50 : avoine, amande, coco
+          {en
+            ? 'Plant milk - 0,50: oat, almond, coconut'
+            : 'Lait végétal - 0,50 : avoine, amande, coco'}
         </p>
         <ul className="extras-list">
           <li className="drink">
             <p>Iced Americano - 4,50</p>
-            <p className="sweet-desc">2 shots de café, eau froide</p>
+            <p className="sweet-desc">
+              {en ? '2 espresso shots, cold water' : '2 shots de café, eau froide'}
+            </p>
           </li>
           <li className="drink">
             <p>Iced Café Latte - 5,50</p>
-            <p className="sweet-desc">2 shots de café, lait froid</p>
+            <p className="sweet-desc">
+              {en ? '2 espresso shots, cold milk' : '2 shots de café, lait froid'}
+            </p>
           </li>
           <li className="drink">
-            <p>Iced Sweet Café Latte - 6,00</p>
+            <p>Iced Café Sweet Latte - 6,00</p>
             <p className="sweet-desc">
-              SIROP AU CHOIX : rose, caramel, vanille, noisette, myrtille
+              {en ? '2 espresso shots, cold milk' : '2 shots de café, lait froid'}
             </p>
-            <p className="sweet-desc">2 shots de café, lait froid</p>
+            <p className="sweet-desc">
+              {en
+                ? 'SYRUP OF YOUR CHOICE: rose, caramel, vanilla, hazelnut, blueberry'
+                : 'SIROP AU CHOIX : rose, caramel, vanille, noisette, myrtille'}
+            </p>
           </li>
           <li className="drink">
             <p>Iced Chocolat - 6,00</p>
-            <p className="sweet-desc">Chocolat, lait froid</p>
+            <p className="sweet-desc">
+              {en ? 'Chocolate, cold milk' : 'Chocolat, lait froid'}
+            </p>
           </li>
           <li className="drink">
             <p>Iced Mocha - 6,00</p>
             <p className="sweet-desc">
-              2 shots de café, nappage chocolat, lait froid
+              {en
+                ? '2 espresso shots, chocolate drizzle, cold milk'
+                : '2 shots de café, nappage chocolat, lait froid'}
             </p>
           </li>
           <li className="drink">
             <p>Iced Caramel Macchiato - 6,00</p>
             <p className="sweet-desc">
-              2 shots de café, nappage caramel, lait froid
+              {en
+                ? '2 espresso shots, caramel drizzle, cold milk'
+                : '2 shots de café, nappage caramel, lait froid'}
             </p>
           </li>
           <li className="drink">
             <p>Iced Chaï - 6,00</p>
-            <p className="sweet-desc">Épices chaï, lait froid</p>
+            <p className="sweet-desc">
+              {en ? 'Chai spices, cold milk' : 'Épices chaï, lait froid'}
+            </p>
           </li>
           <li className="drink">
             <p>Iced Café Viennois - 6,50</p>
-            <p className="sweet-desc">2 shots de café, lait froid, chantilly</p>
+            <p className="sweet-desc">
+              {en
+                ? '2 espresso shots, cold milk, whipped cream'
+                : '2 shots de café, lait froid, chantilly'}
+            </p>
           </li>
           <li className="drink">
             <p>Iced Matcha Latte - 6,50</p>
-            <p className="sweet-desc">Matcha, lait froid</p>
+            <p className="sweet-desc">
+              {en ? 'Matcha, cold milk' : 'Matcha, lait froid'}
+            </p>
           </li>
           <li className="drink">
-            <p>Iced Matcha Latte Sweet - 7,00</p>
+            <p>Iced Matcha Sweet Latte - 7,00</p>
             <p className="sweet-desc">
-              PURÉE AU CHOIX : fraise, framboise, mangue, myrtille
+              {en ? 'Matcha, cold milk' : 'Matcha, lait froid'}
             </p>
-            <p className="sweet-desc">Matcha, lait froid</p>
+            <p className="sweet-desc">
+              {en
+                ? 'PURÉE OF YOUR CHOICE: strawberry, raspberry, mango, blueberry'
+                : 'PURÉE AU CHOIX : fraise, framboise, mangue, myrtille'}
+            </p>
           </li>
           <li className="drink">
             <p>Iced Matcha Latte Viennois - 7,00</p>
-            <p className="sweet-desc">Matcha, lait froid, chantilly</p>
+            <p className="sweet-desc">
+              {en ? 'Matcha, cold milk, whipped cream' : 'Matcha, lait froid, chantilly'}
+            </p>
           </li>
           <li className="drink">
             <p>Iced Chocolat Viennois - 7,00</p>
-            <p className="sweet-desc">Chocolat, lait froid, chantilly</p>
+            <p className="sweet-desc">
+              {en
+                ? 'Chocolate, cold milk, whipped cream'
+                : 'Chocolat, lait froid, chantilly'}
+            </p>
           </li>
           <li className="drink">
             <p>Iced Mocha Viennois - 7,00</p>
             <p className="sweet-desc">
-              2 shots de café, lait froid, nappage chocolat, chantilly
+              {en
+                ? '2 espresso shots, cold milk, chocolate drizzle, whipped cream'
+                : '2 shots de café, lait froid, nappage chocolat, chantilly'}
             </p>
           </li>
           <li className="drink">
             <p>Iced Tiramisu Latte - 7,00</p>
             <p className="sweet-desc">
-              2 shots de café, lait froid, nappage chocolat, crème, chocolat en
-              poudre
+              {en
+                ? '2 espresso shots, cold milk, chocolate drizzle, cream, cocoa powder'
+                : '2 shots de café, lait froid, nappage chocolat, crème, chocolat en poudre'}
             </p>
           </li>
           <li className="drink">
@@ -374,38 +539,48 @@ function DrinkSection() {
         </ul>
         <DishCard
           image={iceMaRas}
-          alt="Iced Matcha Latte Framboise"
-          name="Iced Matcha Latte Framboise"
+          alt="Iced Matcha Sweet Latte Framboise"
+          name="Iced Matcha Sweet Latte Framboise"
           price="7,00"
-          description="PURÉE AU CHOIX : fraise, framboise, mangue, myrtille."
-          extras="Matcha, lait froid"
+          description={
+            en ? 'Matcha, cold milk' : 'Matcha, lait froid'
+          }
+          extras={
+            en
+              ? 'PURÉE OF YOUR CHOICE: strawberry, raspberry, mango, blueberry.'
+              : 'PURÉE AU CHOIX : fraise, framboise, mangue, myrtille.'
+          }
         />
       </MenuSection>
 
-      <MenuSection id="extra-boisson" title="Extra">
+      <MenuSection id="extra-boisson" title={en ? 'Extras' : 'Extra'}>
         <ul className="extras-list">
-          <li>Grand Format - 0,50</li>
-          <li>Shot Expresso - 1,00</li>
-          <li>Chantilly - 1,00</li>
-          <li>Sirop - 0,50</li>
+          <li>{en ? 'Large size - 0,50' : 'Grand Format - 0,50'}</li>
+          <li>{en ? 'Espresso shot - 1,00' : 'Shot Expresso - 1,00'}</li>
+          <li>{en ? 'Whipped cream - 1,00' : 'Chantilly - 1,00'}</li>
+          <li>{en ? 'Syrup - 0,50' : 'Sirop - 0,50'}</li>
           <li className="sweet-desc">
-            Rose, vanille, caramel, noisette, myrtille
+            {en
+              ? 'Rose, vanilla, caramel, hazelnut, blueberry'
+              : 'Rose, vanille, caramel, noisette, myrtille'}
           </li>
-          <li>Lait Végétal - 0,50</li>
-          <li className="sweet-desc">Avoine, amande, coco</li>
+          <li>{en ? 'Plant milk - 0,50' : 'Lait Végétal - 0,50'}</li>
+          <li className="sweet-desc">
+            {en ? 'Oat, almond, coconut' : 'Avoine, amande, coco'}
+          </li>
         </ul>
       </MenuSection>
 
-      <MenuSection id="jus" title="Jus">
+      <MenuSection id="jus" title={en ? 'Juices' : 'Jus'}>
         <ul className="extras-list">
-          <li>Orange Pressée - 5,50</li>
-          <li>Multifruits - 5,00</li>
+          <li>{en ? 'Fresh orange juice - 5,50' : 'Orange Pressée - 5,50'}</li>
+          <li>{en ? 'Multifruit juice - 5,00' : 'Multifruits - 5,00'}</li>
         </ul>
       </MenuSection>
 
-      <MenuSection id="the-infusion" title="Thé Infusion">
+      <MenuSection id="the-infusion" title={en ? 'Teas & Infusions' : 'Thé Infusion'}>
         <ul className="extras-list">
-          <li>Thé Yuzu - 4,50</li>
+          <li>{en ? 'Yuzu tea - 4,50' : 'Thé Yuzu - 4,50'}</li>
           <li>Kusmi Tea Earl Grey Bio - 3,90</li>
           <li>Kusmi Tea English Breakfast Bio - 3,90</li>
           <li>Kusmi Tea Verveine menthe - 3,90</li>
@@ -415,7 +590,7 @@ function DrinkSection() {
         </ul>
       </MenuSection>
 
-      <MenuSection id="soda-canette" title="Soda">
+      <MenuSection id="soda-canette" title={en ? 'Sodas' : 'Soda'}>
         <ul className="extras-list">
           <li>Coca - 2,90</li>
           <li>Coca Zéro - 2,90</li>

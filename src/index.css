@@ -110,7 +110,7 @@ button:focus-visible {
 .dropdown:hover .dropdown-menu,
 .dropdown:focus-within .dropdown-menu {
   display: block;
-} /* apparaît au survol OU au clavier */
+}
 
 .dropdown-menu button {
   display: block;
@@ -580,7 +580,7 @@ button:focus-visible {
   .dish-img,
   .formuladish-img {
     width: 100%;
-    height: 200px;
+    height: 250px;
   }
 
   /* Header compact : boutons plus petits pour tenir sur 360px */
