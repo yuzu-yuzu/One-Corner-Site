@@ -1,6 +1,8 @@
 import menulogo from '../assets/menulogo.png';
 import brunch from '../assets/formuleBrunch.jpg';
 import avocadoEgg from '../assets/avocadoEgg.jpg';
+import salmonEgg from '../assets/salmonEgg.jpg';
+import baconEgg from '../assets/baconEgg.jpg';
 import wafflebacon from '../assets/waffleBacon2.jpg';
 import avocadoToast from '../assets/avocadoToast.jpg';
 import salmonToast from '../assets/salmonToast.png';
@@ -11,12 +13,13 @@ import petitgranola from '../assets/smallGranola.jpg';
 import roseLatte from '../assets/roseLatte.jpg';
 import iceMaRas from '../assets/iceMatchaRas2.jpg';
 
-import { type ReactNode } from 'react';
+import { useState, useEffect, useRef, type ReactNode } from 'react';
 
 // Interfaces de typage
 interface DishCardProps {
   image?: string;
   alt?: string;
+  imgPosition?: string;
   name: string;
   price: string | number;
   description?: string;
@@ -33,6 +36,7 @@ interface MenuSectionProps {
 function DishCard({
   image = '',
   alt = '',
+  imgPosition = 'center',
   name,
   price,
   description = '',
@@ -40,7 +44,102 @@ function DishCard({
 }: DishCardProps) {
   return (
     <article className="dish">
-      {image && <img src={image} alt={alt} className="dish-img" />}
+      {image && (
+        <img
+          src={image}
+          alt={alt}
+          className="dish-img"
+          style={{ objectPosition: imgPosition }}
+        />
+      )}
+      <div className="dish-text">
+        <h4>
+          {name} - {price}
+        </h4>
+        <p>{description}</p>
+        {extras && <p>{extras}</p>}
+      </div>
+    </article>
+  );
+}
+
+// Mini-carrousel : les photos défilent toutes seules, dots cliquables + swipe.
+// Dès que le visiteur prend la main, on ralentit (5s -> 15s) pour le laisser regarder.
+function DishCarousel({
+  images,
+  name,
+  price,
+  description = '',
+  extras = '',
+  en = false,
+}: {
+  images: { src: string; alt: string; position?: string; zoom?: number }[];
+  name: string;
+  price: string | number;
+  description?: string;
+  extras?: string;
+  en?: boolean;
+}) {
+  const [index, setIndex] = useState(0);
+  const [delay, setDelay] = useState(5000);
+  const touchX = useRef<number | null>(null);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % images.length);
+    }, delay);
+    return () => clearInterval(id);
+  }, [index, delay, images.length]);
+
+  const goTo = (i: number) => {
+    setIndex((i + images.length) % images.length);
+    setDelay(10000);
+  };
+
+  return (
+    <article className="dish">
+      <div>
+        <div style={{ overflow: 'hidden', borderRadius: 12 }}>
+        <img
+          key={index}
+          src={images[index].src}
+          alt={images[index].alt}
+          className="dish-img dish-fade"
+            style={{
+              display: 'block',
+              objectPosition: images[index].position ?? 'center',
+              transform: images[index].zoom
+                ? `scale(${images[index].zoom})`
+                : undefined,
+            }}
+          onTouchStart={(e) => {
+            touchX.current = e.touches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
+            if (touchX.current === null) return;
+            const dx = e.changedTouches[0].clientX - touchX.current;
+            touchX.current = null;
+            if (dx < -40) goTo(index + 1); // swipe gauche -> suivante
+            else if (dx > 40) goTo(index - 1); // swipe droit -> précédente
+          }}
+        />
+        </div>
+        <div className="dots">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              className={i === index ? 'dot dot-active' : 'dot'}
+              aria-label={
+                en
+                  ? `Photo ${i + 1} of ${images.length}`
+                  : `Photo ${i + 1} sur ${images.length}`
+              }
+              onClick={() => goTo(i)}
+            />
+          ))}
+        </div>
+      </div>
       <div className="dish-text">
         <h4>
           {name} - {price}
@@ -100,10 +199,17 @@ export default function Menu({ en = false }: { en?: boolean }) {
         </article>
       </MenuSection>
 
-      <MenuSection id="sale" title={en ? 'Savory' : 'Plat Salé'}>
-        <DishCard
-          image={avocadoEgg}
-          alt="Avocado egg benedict"
+      <MenuSection id="sale" title={en ? 'Savory dish' : 'Plat Salé'}>
+        <DishCarousel
+          images={[
+            { src: avocadoEgg, alt: 'Avocado egg benedict', zoom: 1.15 },
+            {
+              src: salmonEgg,
+              alt: 'Salmon egg benedict',
+              position: 'center 75%',
+            },
+            { src: baconEgg, alt: 'Bacon egg benedict' },
+          ]}
           name="Avocado Egg Benedict"
           price="13,90"
           description={
@@ -112,6 +218,7 @@ export default function Menu({ en = false }: { en?: boolean }) {
               : 'Pain de muffin, avocat, coleslaw, 2 œufs pochés, sauce hollandaise, salade'
           }
           extras={en ? 'SMOKED SALMON or BACON + 2€' : 'SAUMON FUMÉ ou BACON + 2€'}
+          en={en}
         />
         <DishCard
           image={wafflebacon}
@@ -143,6 +250,7 @@ export default function Menu({ en = false }: { en?: boolean }) {
         <DishCard
           image={salmonToast}
           alt="Saumon Toast"
+          imgPosition="center 55%"
           name="Saumon Toast"
           price="14,90"
           description={
@@ -174,7 +282,7 @@ export default function Menu({ en = false }: { en?: boolean }) {
         />
       </MenuSection>
 
-      <MenuSection id="sucre" title={en ? 'Sweet' : 'Plat Sucré'}>
+      <MenuSection id="sucre" title={en ? 'Sweet dish' : 'Plat Sucré'}>
         <h3 style={{ textAlign: 'center' }}>
           {' '}
           {en
@@ -244,6 +352,7 @@ export default function Menu({ en = false }: { en?: boolean }) {
         <DishCard
           image={petitgranola}
           alt="petit granola"
+          imgPosition="center 55%"
           name="Petit Granola"
           price="6,00"
           description={

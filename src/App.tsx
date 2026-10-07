@@ -54,6 +54,9 @@ export default function App() {
           <img src={logo} alt="Logo OneCorner" />
         </button>
         <nav>
+          <a href="#contact" className="btn">
+            Contact
+          </a>
           <button
             type="button"
             className="btn-second"
@@ -61,9 +64,6 @@ export default function App() {
           >
             {en ? 'FR' : 'EN'}
           </button>
-          <a href="#contact" className="btn-second">
-            Contact
-          </a>
           <div className="dropdown">
             <button className="btn" onClick={() => setPage('menu')}>
               Menu

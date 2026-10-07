@@ -202,7 +202,7 @@ button:focus-visible {
 .site-header nav {
   display: flex; /* enfants côte à côte pilotés, fini l'alignement baseline */
   align-items: center; /* centrés verticalement, au pixel près */
-  gap: 16px; /* espace ENTRE les boutons (remplace leurs marges latérales) */
+  gap: 10px; /* espace ENTRE les boutons (remplace leurs marges latérales) */
 }
 
 .site-logo {
@@ -497,6 +497,40 @@ button:focus-visible {
   flex: 1;
 } /* le texte prend tout le reste */
 
+.dots {
+  display: flex; /* pastilles côte à côte */
+  justify-content: center; /* centrées sous la photo */
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%; /* rond */
+  border: none;
+  padding: 0;
+  background: #e8c9a0; /* beige : photo non visible */
+  cursor: pointer;
+}
+
+.dot-active {
+  background: #b5651d; /* marron du site : photo visible */
+}
+
+@keyframes dish-fade {
+  from { opacity: 0; } /* démarre invisible */
+  to { opacity: 1; } /* arrive à pleine visibilité */
+}
+
+.dish-fade {
+  animation: dish-fade 0.9s ease-in-out; /* fondu doux à chaque nouvelle photo */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dish-fade { animation: none; } /* pas d'animation si l'utilisateur la refuse */
+}
+
 .formuladish-img {
   width: 140px;
   height: 200px;
@@ -580,7 +614,10 @@ button:focus-visible {
   .dish-img,
   .formuladish-img {
     width: 100%;
-    height: 250px;
+    max-width: 430px;
+    height: 275px;
+    display: block;
+    margin: 0 auto;
   }
 
   /* Header compact : boutons plus petits pour tenir sur 360px */
