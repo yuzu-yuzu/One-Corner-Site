@@ -589,10 +589,22 @@ button:focus-visible {
   margin: 2px 0; /* lignes COLLÉES dans l'article : nom et description vont ensemble */
 }
 
+.bite {
+  margin-bottom: 16px; /* même effet que .drink, découplé pour Light Bites */
+}
+
+.bite p {
+  margin: 2px 0;
+}
+
 .dish-text p,
 .extras-list p,
 .hero p {
   color: #8a4d14;
+}
+
+.bite p:not(.sweet-desc) {
+  color: #b5651d; /* titre plat : garde la couleur d'avant (li) */
 }
 
 /* ===== Mobile (max 600px) : tout s'empile et se réduit ===== */

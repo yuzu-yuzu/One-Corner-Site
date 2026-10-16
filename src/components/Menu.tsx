@@ -194,9 +194,9 @@ export default function Menu({ en = false }: { en?: boolean }) {
           </div>
           <div className="dish-text">
             <h4>Formule Brunch - 27,90</h4>
-            <p>{en ? 'Savory or sweet dish of your choice' : 'Plat salé ou Sucré au choix'}</p>
-            <p>{en ? 'Hot or cold drink of your choice' : 'Boisson chaude ou froide au choix'}</p>
-            <p>{en ? 'Orange or multifruit juice' : "Jus d'orange ou multifruit"}</p>
+            <p>{en ? 'Savory or sweet dish of your choice' : 'Plat salé OU sucré au choix'}</p>
+            <p>{en ? 'Hot or cold drink of your choice' : 'Boisson chaude OU froide au choix'}</p>
+            <p>{en ? 'Orange or multifruit juice' : "Jus d'orange OU multifruit"}</p>
             <p>
               {en
                 ? 'Dessert of your choice: small granola, 2 scoops of ice cream, homemade tiramisu or fruit salad'
@@ -390,18 +390,39 @@ export default function Menu({ en = false }: { en?: boolean }) {
         </ul>
       </MenuSection>
 
-      <MenuSection id="douceur" title={en ? 'Snacks' : 'Petite Faim'}>
+      <MenuSection id="douceur" title={en ? 'Light Bites' : 'Petite Faim'}>
         <ul className="extras-list">
-          <li>Cookie - 3,90</li>
-          <li className="sweet-desc">
-            {en
-              ? 'Chocolate chunks OR triple chocolate'
-              : 'Morceaux de chocolat OU 3 chocolats'}
+          <li className="bite">
+            <p>Cookie - 3,90</p>
+            <p className="sweet-desc">
+              {en
+                ? 'Chocolate chunks or triple chocolate'
+                : 'Morceaux de chocolat ou 3 chocolats'}
+            </p>
           </li>
-          <li>Brownie - 3,90</li>
-          <li>{en ? 'Homemade tiramisu - 6,50' : 'Tiramisu maison - 6,50'}</li>
-          <li>{en ? 'Fruit salad - 5,00' : 'Salade de fruits - 5,00'}</li>
-          <li>{en ? 'French fries - 3,90' : 'Pommes frites - 3,90'}</li>
+          <li className="bite">
+            <p>Brownie - 3,90</p>
+          </li>
+          <li className="bite">
+            <p>{en ? 'Homemade tiramisu - 6,50' : 'Tiramisu maison - 6,50'}</p>
+          </li>
+          <li className="bite">
+            <p>Affogato - 7,50</p>
+            <p className="sweet-desc">
+              {en
+                ? '1 or 2 espresso shot, 1 vanilla scoop of gelato'
+                : '1 ou 2 shot de café, 1 boule de glace vanille'}
+            </p>
+            <p className="sweet-desc">
+              {en ? 'Sugar syrup - 0,50' : 'Sirop de sucre - 0,50'}
+            </p>
+          </li>
+          <li className="bite">
+            <p>{en ? 'Fruit salad - 5,00' : 'Salade de fruits - 5,00'}</p>
+          </li>
+          <li className="bite">
+            <p>{en ? 'French fries - 3,90' : 'Pommes frites - 3,90'}</p>
+          </li>
         </ul>
       </MenuSection>
 

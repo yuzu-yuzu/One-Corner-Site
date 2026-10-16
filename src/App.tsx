@@ -79,7 +79,7 @@ export default function App() {
                 {en ? 'Sweet' : 'Plat Sucré'}
               </button>
               <button onClick={() => goMenu('douceur')}>
-                {en ? 'Snacks' : 'Petite Faim'}
+                {en ? 'Light Bites' : 'Petite Faim'}
               </button>
               <button onClick={() => goMenu('boisson-chaude')}>
                 {en ? 'Hot Drinks' : 'Boisson Chaude'}
