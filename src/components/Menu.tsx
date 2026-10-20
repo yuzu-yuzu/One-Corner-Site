@@ -407,6 +407,14 @@ export default function Menu({ en = false }: { en?: boolean }) {
             <p>{en ? 'Homemade tiramisu - 6,50' : 'Tiramisu maison - 6,50'}</p>
           </li>
           <li className="bite">
+            <p>{en ? 'Ice Cream - 4,50' : 'Boules de glaces - 4,50'}</p>
+            <p className="sweet-desc">
+              {en
+                ? '2 scoops of ice cream : Chocolate, Vanilla, Strawberry or Coconut'
+                : '2 boules au choix : Chocolat, Vanille, Fraise ou Coco'}
+            </p>
+          </li>
+          <li className="bite">
             <p>Affogato - 7,50</p>
             <p className="sweet-desc">
               {en
