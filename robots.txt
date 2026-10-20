@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://onecorner.iyum.app/sitemap.xml
